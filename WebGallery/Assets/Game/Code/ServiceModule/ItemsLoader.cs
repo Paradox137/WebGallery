@@ -18,7 +18,7 @@ namespace WebGallery.ServiceModule
 			_galleryMediator = __galleryMediator;
 		}
 		
-		public static async UniTask<Texture> DownloadItem(uint id)
+		public static async UniTask<Texture2D> DownloadItem(uint id)
 		{
 			string path = URL + id + ".jpg";
 				
@@ -30,7 +30,7 @@ namespace WebGallery.ServiceModule
 				? DownloadHandlerTexture.GetContent(request) : null;
 		}
 		
-		public static async UniTask<List<Texture>> DownloadMultipleItems(uint[] ids)
+		public static async UniTask<List<Texture2D>> DownloadMultipleItems(uint[] ids)
 		{
 			string[] paths = new string[ids.Length];
 			
@@ -53,7 +53,7 @@ namespace WebGallery.ServiceModule
 						=> CalculateProgress(x,i, requests.Length))));;
 			}
 			
-			List<Texture> textures = new List<Texture>();
+			List<Texture2D> textures = new List<Texture2D>();
 			
 			foreach (UnityWebRequest request in requests)
 			{

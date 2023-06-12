@@ -13,7 +13,7 @@ namespace WebGallery.GalleryItemModule
 		public ButtonSceneTransition ButtonViewItemTransition => _buttonViewItemTransition;
 		public RectTransform RectTransform => _rectTransform;
 
-		public void UpdateSerializedView(uint __name, Texture __texture)
+		public void UpdateSerializedView(uint __name, Texture2D __texture)
 		{
 			this.name = __name.ToString();
 			ItemImage.texture = __texture;

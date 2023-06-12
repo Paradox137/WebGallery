@@ -8,6 +8,6 @@ namespace WebGallery.GalleryItemModule
 	{
 		[field: SerializeField] public uint Id { get; set; }
 		[field: SerializeField] public bool IsLoaded { get; set;}
-		[field: SerializeField] public Texture ItemTexture { get; set;}
+		[field: SerializeField] public Texture2D ItemTexture { get; set;}
 	}
 }

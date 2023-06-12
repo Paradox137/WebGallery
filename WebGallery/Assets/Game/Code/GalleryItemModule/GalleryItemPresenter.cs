@@ -24,7 +24,7 @@ namespace WebGallery.GalleryItemModule
 			_galleryItemView.ButtonViewItemTransition.DisableButton();
 		}
 		
-		public void SetTexture(Texture __itemTexture)
+		public void SetTexture(Texture2D __itemTexture)
 		{
 			_galleryItemModel.ItemTexture = __itemTexture;
 			_galleryItemModel.IsLoaded = true;
@@ -52,7 +52,7 @@ namespace WebGallery.GalleryItemModule
 			_galleryItemView.ButtonViewItemTransition.EnableButton();
 		}
 
-		public Texture GetTexture()
+		public Texture2D GetTexture()
 		{
 			return _galleryItemModel.ItemTexture;
 		}

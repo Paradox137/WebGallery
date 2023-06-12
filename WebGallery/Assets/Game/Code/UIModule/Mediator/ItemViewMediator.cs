@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 using WebGallery.UIModule.Transition;
 
@@ -12,6 +13,10 @@ namespace WebGallery.UIModule.Mediator
 		{
 			InitApplicationsSettings();
 			InitTransitionButtons();
+		}
+		private void Start()
+		{
+			
 		}
 		private void InitApplicationsSettings()
 		{

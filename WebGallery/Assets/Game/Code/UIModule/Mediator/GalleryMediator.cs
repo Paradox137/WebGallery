@@ -65,7 +65,7 @@ namespace WebGallery.UIModule.Mediator
 				if (!galleryItem.IsLoading && !galleryItem.IsLoaded() && galleryItem.GetRectTransform().IsVisible(_galleryContent.Viewport))
 				{
 					galleryItem.IsLoading = true;
-					Texture texture = await ItemsLoader.DownloadItem(galleryItem.GetID());
+					Texture2D texture = await ItemsLoader.DownloadItem(galleryItem.GetID());
 					galleryItem.SetTexture(texture);
 				}
 			}
@@ -99,7 +99,7 @@ namespace WebGallery.UIModule.Mediator
 				}
 			}
 			
-			List<Texture> textures = await ItemsLoader.DownloadMultipleItems(itemsIDs.ToArray());
+			List<Texture2D> textures = await ItemsLoader.DownloadMultipleItems(itemsIDs.ToArray());
 
 			for (int i = 0; i < textures.Count; i++)
 			{
