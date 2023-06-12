@@ -1,4 +1,4 @@
-﻿namespace WebGallery.UIModule.Scenes
+﻿namespace WebGallery.UIModule.Components.Scenes
 {
 	public enum WebGalleryScenes : int
 	{

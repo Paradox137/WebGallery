@@ -2,9 +2,9 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using WebGallery.UIModule.Scenes;
+using WebGallery.UIModule.Components.Scenes;
 
-namespace WebGallery.UIModule.Transition
+namespace WebGallery.UIModule.Components.Transitions
 {
 	public delegate void ButtonItemViewSceneCallBack();
 	[Serializable]

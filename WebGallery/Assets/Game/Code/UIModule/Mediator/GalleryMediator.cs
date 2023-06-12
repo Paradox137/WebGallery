@@ -9,7 +9,6 @@ using WebGallery.GalleryItemModule;
 using WebGallery.ServiceModule;
 using WebGallery.UIModule.Components.Scenes;
 using WebGallery.UIModule.Components.Scroll;
-using WebGallery.UIModule.Scenes;
 
 namespace WebGallery.UIModule.Mediator
 {

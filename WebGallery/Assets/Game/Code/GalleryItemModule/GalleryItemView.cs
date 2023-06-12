@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using WebGallery.ServiceModule;
-using WebGallery.UIModule.Transition;
+using WebGallery.UIModule.Components.Transitions;
 
 namespace WebGallery.GalleryItemModule
 {

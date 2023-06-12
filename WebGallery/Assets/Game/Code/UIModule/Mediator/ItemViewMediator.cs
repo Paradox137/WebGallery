@@ -3,8 +3,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using WebGallery.ServiceModule;
-using WebGallery.UIModule.Scenes;
-using WebGallery.UIModule.Transition;
+using WebGallery.UIModule.Components.Scenes;
+using WebGallery.UIModule.Components.Transitions;
 
 namespace WebGallery.UIModule.Mediator
 {
