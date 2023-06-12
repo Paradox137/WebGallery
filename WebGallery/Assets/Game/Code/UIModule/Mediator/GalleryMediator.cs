@@ -31,13 +31,14 @@ namespace WebGallery.UIModule.Mediator
 		private void Awake()
 		{
 			InitApplicationsSettings();
-			InitComponents();
-			InitCollections();
-			InitServices();
 		}
 		
 		private void Start()
 		{
+			InitComponents();
+			InitCollections();
+			Canvas.ForceUpdateCanvases();
+			InitServices();
 			CheckFirstItemsVisability();
 		}
 
@@ -56,7 +57,7 @@ namespace WebGallery.UIModule.Mediator
 		private void InitServices()
 		{
 			ItemsLoader.Init(this);
-			ContentPositionRememberer.SetContentPosition(_galleryContent.ScrollRect);
+			ContentPositionRememberer.Init(_galleryContent.ScrollRect);
 		}
 		private void InitCollections()
 		{
@@ -68,7 +69,7 @@ namespace WebGallery.UIModule.Mediator
 		private void OnScrollGallery(Vector2 __vector2)
 		{
 			ContentPositionRememberer.PlayerYPosOnContent = __vector2.y;
-			Debug.Log(__vector2.y);
+			Debug.Log(ContentPositionRememberer.PlayerYPosOnContent);
 			CheckItemsVisabilityOnScroll();
 		}
 		private async void CheckItemsVisabilityOnScroll()
@@ -85,8 +86,6 @@ namespace WebGallery.UIModule.Mediator
 		}
 		private async void CheckFirstItemsVisability()
 		{
-			Canvas.ForceUpdateCanvases();
-			
 			if (GalleryItemsCollection.IsCreated)
 			{
 				foreach (var galleryItem in GalleryItemsCollection.GalleryItemPresenters)
