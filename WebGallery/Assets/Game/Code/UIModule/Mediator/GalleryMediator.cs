@@ -29,7 +29,8 @@ namespace WebGallery.UIModule.Mediator
 		{
 			CheckFirstItemsVisability();
 		}
-		
+
+		#region Initialization
 		private void InitComponents()
 		{
 			_gallerySceneLoader.ShowSceneLoader();
@@ -45,7 +46,9 @@ namespace WebGallery.UIModule.Mediator
 		{
 			GalleryItemsCollection.InitGalleryCollection(_galleryContent.Content, _galleryContent.GameObject);
 		}
-		
+		#endregion
+
+		#region GalleryItems
 		private void OnScrollGallery(Vector2 __vector2)
 		{
 			CheckItemsVisabilityOnScroll();
@@ -106,5 +109,6 @@ namespace WebGallery.UIModule.Mediator
 		{
 			_gallerySceneLoader.ChangeProgressBarValue(__value);
 		}
+		#endregion
 	}
 }
