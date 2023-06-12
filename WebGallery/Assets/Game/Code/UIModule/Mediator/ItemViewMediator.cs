@@ -1,21 +1,21 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using WebGallery.UIModule.Transition;
 
 namespace WebGallery.UIModule.Mediator
 {
-	public class MenuMediator : MonoBehaviour
+	public class ItemViewMediator : MonoBehaviour
 	{
 		[SerializeField] private ButtonSceneTransition _buttonGalleryTransition;
-		
+		[SerializeField] private Image Image;
 		private void Awake()
 		{
-			InitTransitionButtons();
 			InitApplicationsSettings();
+			InitTransitionButtons();
 		}
 		private void InitApplicationsSettings()
 		{
-			Screen.orientation = ScreenOrientation.Portrait;
-			Application.targetFrameRate = 60;
+			Screen.orientation = ScreenOrientation.AutoRotation;
 		}
 		private void InitTransitionButtons()
 		{

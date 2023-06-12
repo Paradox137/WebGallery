@@ -20,6 +20,7 @@ namespace WebGallery.UIModule.Mediator
 		private OnScrollCallBack _onScrollGalleryCallBack;
 		private void Awake()
 		{
+			InitApplicationsSettings();
 			InitComponents();
 			InitCollections();
 			InitServices();
@@ -31,6 +32,10 @@ namespace WebGallery.UIModule.Mediator
 		}
 
 		#region Initialization
+		private void InitApplicationsSettings()
+		{
+			Screen.orientation = ScreenOrientation.Portrait;
+		}
 		private void InitComponents()
 		{
 			_gallerySceneLoader.ShowSceneLoader();
