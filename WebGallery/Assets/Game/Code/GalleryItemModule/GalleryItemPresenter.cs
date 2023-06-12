@@ -21,6 +21,7 @@ namespace WebGallery.GalleryItemModule
 			_galleryItemView = __galleryItemView;
 			
 			_galleryItemView.ButtonViewItemTransition.SubscribeButton();
+			_galleryItemView.ButtonViewItemTransition.DisableButton();
 		}
 		
 		public void SetTexture(Texture __itemTexture)
@@ -28,7 +29,7 @@ namespace WebGallery.GalleryItemModule
 			_galleryItemModel.ItemTexture = __itemTexture;
 			_galleryItemModel.IsLoaded = true;
 
-			UpdateTexture();
+			UpdateView();
 		}
 
 		public RectTransform GetRectTransform()
@@ -45,9 +46,10 @@ namespace WebGallery.GalleryItemModule
 			return _galleryItemModel.Id;
 		}
 
-		public void UpdateTexture()
+		public void UpdateView()
 		{
 			_galleryItemView.ItemImage.texture = _galleryItemModel.ItemTexture;
+			_galleryItemView.ButtonViewItemTransition.EnableButton();
 		}
 
 		public Texture GetTexture()

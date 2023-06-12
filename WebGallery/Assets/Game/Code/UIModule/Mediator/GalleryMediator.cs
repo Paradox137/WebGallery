@@ -80,7 +80,7 @@ namespace WebGallery.UIModule.Mediator
 				{
 					if (galleryItem.IsLoaded())
 					{
-						galleryItem.UpdateTexture();
+						galleryItem.UpdateView();
 					}
 				}
 				_gallerySceneLoader.HideSceneLoader();

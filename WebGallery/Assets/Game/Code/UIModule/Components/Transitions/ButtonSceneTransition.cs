@@ -11,7 +11,14 @@ namespace WebGallery.UIModule.Transition
 	{
 		[field: SerializeField] private WebGalleryScenes _sceneReference;
 		[field: SerializeField] private Button _button;
-		
+		public void EnableButton()
+		{
+			_button.enabled = true;
+		}
+		public void DisableButton()
+		{
+			_button.enabled = false;
+		}
 		public void SubscribeButton()
 		{
 			_button.onClick.AddListener(LoadScene);
