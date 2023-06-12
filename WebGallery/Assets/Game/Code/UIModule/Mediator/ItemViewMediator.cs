@@ -1,7 +1,9 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using WebGallery.ServiceModule;
+using WebGallery.UIModule.Scenes;
 using WebGallery.UIModule.Transition;
 
 namespace WebGallery.UIModule.Mediator
@@ -18,6 +20,13 @@ namespace WebGallery.UIModule.Mediator
 		private void Start()
 		{
 			ItemViewService.ChangeView(_image);
+		}
+		private void Update()
+		{
+			if (Input.GetKeyDown(KeyCode.Escape))
+			{
+				SceneManager.LoadScene((int)WebGalleryScenes.Gallery);
+			}
 		}
 		private void InitApplicationsSettings()
 		{

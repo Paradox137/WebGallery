@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using WebGallery.CollectionModule;
 using WebGallery.GalleryItemModule;
 using WebGallery.ServiceModule;
 using WebGallery.UIModule.Components.Scenes;
 using WebGallery.UIModule.Components.Scroll;
+using WebGallery.UIModule.Scenes;
 
 namespace WebGallery.UIModule.Mediator
 {
@@ -18,6 +20,14 @@ namespace WebGallery.UIModule.Mediator
 		[SerializeField] private ScrollRectContent _galleryContent;
 		
 		private OnScrollCallBack _onScrollGalleryCallBack;
+
+		private void Update()
+		{
+			if (Input.GetKeyDown(KeyCode.Escape))
+			{
+				SceneManager.LoadScene((int)WebGalleryScenes.Menu);
+			}
+		}
 		private void Awake()
 		{
 			InitApplicationsSettings();
