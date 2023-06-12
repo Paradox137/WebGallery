@@ -6,6 +6,7 @@ using WebGallery.UIModule.Scenes;
 
 namespace WebGallery.UIModule.Transition
 {
+	public delegate void ButtonItemViewSceneCallBack();
 	[Serializable]
 	public struct ButtonSceneTransition
 	{
@@ -13,15 +14,20 @@ namespace WebGallery.UIModule.Transition
 		[field: SerializeField] private Button _button;
 		public void EnableButton()
 		{
-			_button.enabled = true;
+			_button.interactable = true;
 		}
 		public void DisableButton()
 		{
-			_button.enabled = false;
+			_button.interactable = false;
 		}
 		public void SubscribeButton()
 		{
 			_button.onClick.AddListener(LoadScene);
+		}
+		
+		public void SubscribeButton(ButtonItemViewSceneCallBack __itemViewSceneCallBack)
+		{
+			_button.onClick.AddListener(__itemViewSceneCallBack.Invoke);
 		}
 		
 		private void UnSubscribeButton()
@@ -31,7 +37,7 @@ namespace WebGallery.UIModule.Transition
 		
 		private void LoadScene()
 		{
-			SceneManager.LoadScene((int)WebGalleryScenes.Gallery);
+			SceneManager.LoadScene((int)_sceneReference);
 		}
 	}
 }

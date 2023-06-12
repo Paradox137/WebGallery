@@ -46,6 +46,7 @@ namespace WebGallery.UIModule.Mediator
 		private void InitServices()
 		{
 			ItemsLoader.Init(this);
+			ContentPositionRememberer.SetContentPosition(_galleryContent.ScrollRect);
 		}
 		private void InitCollections()
 		{
@@ -56,6 +57,8 @@ namespace WebGallery.UIModule.Mediator
 		#region GalleryItems
 		private void OnScrollGallery(Vector2 __vector2)
 		{
+			ContentPositionRememberer.PlayerYPosOnContent = __vector2.y;
+			Debug.Log(__vector2.y);
 			CheckItemsVisabilityOnScroll();
 		}
 		private async void CheckItemsVisabilityOnScroll()
@@ -80,7 +83,7 @@ namespace WebGallery.UIModule.Mediator
 				{
 					if (galleryItem.IsLoaded())
 					{
-						galleryItem.UpdateView();
+						galleryItem.TryUpdateView();
 					}
 				}
 				_gallerySceneLoader.HideSceneLoader();

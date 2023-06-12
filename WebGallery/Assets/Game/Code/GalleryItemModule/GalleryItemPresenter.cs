@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using WebGallery.ServiceModule;
 using WebGallery.UIModule.Scenes;
 using WebGallery.UIModule.Transition;
 
@@ -8,28 +9,43 @@ namespace WebGallery.GalleryItemModule
 	{
 		private GalleryItemView _galleryItemView;
 		private GalleyItemModel _galleryItemModel;
+		private ButtonItemViewSceneCallBack viewSceneCallBack;
 		public bool IsLoading { get; set; }
 
 		public void UpdateSerializedPresenter(GalleryItemView __galleryItemView)
 		{
 			_galleryItemView = __galleryItemView;
-			_galleryItemView.ButtonViewItemTransition.SubscribeButton();
+
+			HandleButton();
 		}
 		public GalleryItemPresenter(GalleryItemView __galleryItemView, GalleyItemModel __galleryItemModel)
 		{
 			_galleryItemModel = __galleryItemModel;
 			_galleryItemView = __galleryItemView;
+
+			HandleButton();
+		}
+
+		private void HandleButton()
+		{
+			if(!_galleryItemModel.IsLoaded)
+				_galleryItemView.ButtonViewItemTransition.DisableButton();
 			
+			viewSceneCallBack = SetTextureToViewService;
+			_galleryItemView.ButtonViewItemTransition.SubscribeButton(viewSceneCallBack);
 			_galleryItemView.ButtonViewItemTransition.SubscribeButton();
-			_galleryItemView.ButtonViewItemTransition.DisableButton();
 		}
 		
+		private void SetTextureToViewService()
+		{
+			ItemViewService.Texture = GetTexture();
+		}
 		public void SetTexture(Texture2D __itemTexture)
 		{
 			_galleryItemModel.ItemTexture = __itemTexture;
 			_galleryItemModel.IsLoaded = true;
 
-			UpdateView();
+			TryUpdateView();
 		}
 
 		public RectTransform GetRectTransform()
@@ -46,10 +62,13 @@ namespace WebGallery.GalleryItemModule
 			return _galleryItemModel.Id;
 		}
 
-		public void UpdateView()
+		public void TryUpdateView()
 		{
-			_galleryItemView.ItemImage.texture = _galleryItemModel.ItemTexture;
-			_galleryItemView.ButtonViewItemTransition.EnableButton();
+			if (_galleryItemView != null)
+			{
+				_galleryItemView.ItemImage.texture = _galleryItemModel.ItemTexture;
+				_galleryItemView.ButtonViewItemTransition.EnableButton();
+			}
 		}
 
 		public Texture2D GetTexture()

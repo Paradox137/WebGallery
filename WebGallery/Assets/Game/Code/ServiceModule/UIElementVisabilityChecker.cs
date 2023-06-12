@@ -6,21 +6,21 @@ namespace WebGallery.ServiceModule
 {
 	public static class UIElementVisabilityChecker
 	{
-		private static int CountCornersVisibleFrom(this RectTransform rectTransform, RectTransform mask)
+		private static int CountCornersVisibleFrom(this RectTransform __rectTransform, RectTransform __mask)
 		{
-			if (rectTransform.IsDestroyed() || mask.IsDestroyed())
+			if (__rectTransform.IsDestroyed() || __mask.IsDestroyed())
 				return 0;
-			Rect screenBounds = new Rect(mask.anchoredPosition.x, mask.anchoredPosition.y, mask.rect.width, mask.rect.height);
+			Rect screenBounds = new Rect(__mask.anchoredPosition.x, __mask.anchoredPosition.y, __mask.rect.width, __mask.rect.height);
 
 			Vector3[] maskCorners = new Vector3[4];
-			rectTransform.GetWorldCorners(maskCorners);
+			__rectTransform.GetWorldCorners(maskCorners);
 
 			return maskCorners.Count(t => screenBounds.Contains(t));
 		}
 
-		public static bool IsVisible(this RectTransform rectTransform, RectTransform mask)
+		public static bool IsVisible(this RectTransform __rectTransform, RectTransform __mask)
 		{
-			return CountCornersVisibleFrom(rectTransform, mask) > 0;
+			return CountCornersVisibleFrom(__rectTransform, __mask) > 0;
 		}
 	}
 }

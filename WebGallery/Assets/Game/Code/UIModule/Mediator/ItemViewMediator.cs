@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
+using WebGallery.ServiceModule;
 using WebGallery.UIModule.Transition;
 
 namespace WebGallery.UIModule.Mediator
@@ -8,7 +9,7 @@ namespace WebGallery.UIModule.Mediator
 	public class ItemViewMediator : MonoBehaviour
 	{
 		[SerializeField] private ButtonSceneTransition _buttonGalleryTransition;
-		[SerializeField] private Image Image;
+		[SerializeField] private RawImage _image;
 		private void Awake()
 		{
 			InitApplicationsSettings();
@@ -16,7 +17,7 @@ namespace WebGallery.UIModule.Mediator
 		}
 		private void Start()
 		{
-			
+			ItemViewService.ChangeView(_image);
 		}
 		private void InitApplicationsSettings()
 		{
