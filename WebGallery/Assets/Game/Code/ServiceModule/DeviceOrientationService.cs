@@ -9,12 +9,12 @@ namespace WebGallery.ServiceModule
 		private float nextOrientationCheckTime;
 
 		private static ScreenOrientation m_currentOrientation;
-		public static ScreenOrientation CurrentOrientation
+		private static ScreenOrientation CurrentOrientation
 		{ 
 			get { return m_currentOrientation; }
-			private set { if (m_currentOrientation != value) { m_currentOrientation = value; Screen.orientation = value; } } 
+		set { if (m_currentOrientation != value) { m_currentOrientation = value; Screen.orientation = value; } } 
 		}
-		public static bool AutoRotateScreen = true;
+		private static bool AutoRotateScreen = true;
 		void Awake()
 		{
 			m_currentOrientation = Screen.orientation;

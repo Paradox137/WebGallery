@@ -1,6 +1,8 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
+using WebGallery.CollectionModule;
+using WebGallery.ServiceModule;
 using WebGallery.UIModule.Mediator;
 
 namespace WebGallery.UIModule.Components.Scroll
@@ -23,9 +25,22 @@ namespace WebGallery.UIModule.Components.Scroll
 			ScrollRect.onValueChanged.AddListener(__scrollCallBack.Invoke);
 		}
 
-		private void UnSubscribeScrollRect()
+		public void UnSubscribeScrollRect()
 		{
-			
+			ScrollRect.onValueChanged.RemoveAllListeners();
+		}
+		
+		public async void CheckItemsVisabilityOnScroll()
+		{
+			foreach (var galleryItem in GalleryItemsCollection.GalleryItemPresenters)
+			{
+				if (!galleryItem.IsLoading && !galleryItem.IsLoaded() && galleryItem.GetRectTransform().IsVisible(Viewport))
+				{
+					galleryItem.IsLoading = true;
+					Texture2D texture = await ItemsLoader.DownloadItem(galleryItem.GetID());
+					galleryItem.SetTexture(texture);
+				}
+			}
 		}
 	}
 }

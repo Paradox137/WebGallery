@@ -36,5 +36,10 @@ namespace WebGallery.UIModule.Mediator
 		{
 			_buttonGalleryTransition.SubscribeButton();
 		}
+
+		private void OnDestroy()
+		{
+			_buttonGalleryTransition.UnSubscribeButton();
+		}
 	}
 }

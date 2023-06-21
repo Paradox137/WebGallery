@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using WebGallery.ServiceModule;
 using WebGallery.UIModule.Components.Transitions;
 
-namespace WebGallery.GalleryItemModule
+namespace WebGallery.MVP.GalleryItem
 {
 	public class GalleryItemView : MonoBehaviour
 	{
@@ -13,10 +12,16 @@ namespace WebGallery.GalleryItemModule
 		public ButtonSceneTransition ButtonViewItemTransition => _buttonViewItemTransition;
 		public RectTransform RectTransform => _rectTransform;
 
-		public void UpdateSerializedView(uint __name, Texture2D __texture)
+		public void SetSerializedView(uint __name, Texture2D __texture)
 		{
-			this.name = __name.ToString();
+			name = __name.ToString();
 			ItemImage.texture = __texture;
+		}
+
+		public void SetTexture(Texture2D __texture)
+		{
+			ItemImage.texture = __texture;
+			ButtonViewItemTransition.EnableButton();
 		}
 	}
 }

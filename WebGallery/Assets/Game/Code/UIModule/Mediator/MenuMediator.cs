@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using WebGallery.UIModule.Components.Transitions;
 
 namespace WebGallery.UIModule.Mediator
@@ -20,6 +21,11 @@ namespace WebGallery.UIModule.Mediator
 		private void InitTransitionButtons()
 		{
 			_buttonGalleryTransition.SubscribeButton();
+		}
+
+		private void OnDestroy()
+		{
+			_buttonGalleryTransition.UnSubscribeButton();
 		}
 	}
 }

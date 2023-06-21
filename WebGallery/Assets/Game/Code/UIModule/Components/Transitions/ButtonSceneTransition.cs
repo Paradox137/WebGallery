@@ -30,9 +30,9 @@ namespace WebGallery.UIModule.Components.Transitions
 			_button.onClick.AddListener(__itemViewSceneCallBack.Invoke);
 		}
 		
-		private void UnSubscribeButton()
+		public void UnSubscribeButton()
 		{
-			_button.onClick.RemoveListener(LoadScene);
+			_button.onClick.RemoveAllListeners();
 		}
 		
 		private void LoadScene()
