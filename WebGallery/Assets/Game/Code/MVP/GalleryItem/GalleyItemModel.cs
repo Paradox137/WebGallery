@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace WebGallery.GalleryItemModule
+namespace WebGallery.MVP.GalleryItem
 {
 	[Serializable]
 	public struct GalleyItemModel

@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using WebGallery.GalleryItemModule;
+using WebGallery.MVP.GalleryItem;
+using WebGallery.ServiceModule;
+using WebGallery.UIModule.Components.Scroll;
 
 namespace WebGallery.CollectionModule
 {
@@ -23,7 +25,7 @@ namespace WebGallery.CollectionModule
 				{
 					GalleryItemView itemView = Object.Instantiate(__itemGameObject, __itemsContent).GetComponent<GalleryItemView>();
 					counter++;
-					itemView.UpdateSerializedView(counter, GalleryItemPresenters[i].GetTexture());
+					itemView.SetSerializedView(counter, GalleryItemPresenters[i].GetTexture());
 					GalleryItemPresenters[i].UpdateSerializedPresenter(itemView);
 				}
 			}
@@ -48,6 +50,33 @@ namespace WebGallery.CollectionModule
 				GalleryItemPresenter itemPresenter = new GalleryItemPresenter(itemView, itemModel);
 				GalleryItemPresenters.Add(itemPresenter);
 			}
+		}
+
+		public static void UpdateCollectionView()
+		{
+			foreach (var galleryItem in GalleryItemsCollection.GalleryItemPresenters)
+			{
+				if (galleryItem.IsLoaded())
+				{
+					galleryItem.TryUpdateView();
+				}
+			}
+		}
+
+		public static List<uint> GetVisibleItemsID(ScrollRectContent __galleryContent)
+		{
+			List<uint> itemsIDs = new List<uint>(); 
+			
+			foreach (var galleryItem in GalleryItemsCollection.GalleryItemPresenters)
+			{
+				if (galleryItem.GetRectTransform().IsVisible(__galleryContent.Viewport))
+				{
+					Debug.Log(galleryItem.GetID());
+					itemsIDs.Add(galleryItem.GetID());
+				}
+			}
+
+			return itemsIDs;
 		}
 	}
 }

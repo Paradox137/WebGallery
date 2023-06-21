@@ -11,7 +11,7 @@ namespace WebGallery.ServiceModule
 		{
 			if (PlayerYPosOnContent == 0)
 				PlayerYPosOnContent = 1;
-
+			
 			SetContentPosition(__scrollRect);
 		}
 		private static void SetContentPosition(ScrollRect __scrollRect)
