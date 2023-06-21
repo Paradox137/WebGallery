@@ -71,7 +71,6 @@ namespace WebGallery.CollectionModule
 			{
 				if (galleryItem.GetRectTransform().IsVisible(__galleryContent.Viewport))
 				{
-					Debug.Log(galleryItem.GetID());
 					itemsIDs.Add(galleryItem.GetID());
 				}
 			}
